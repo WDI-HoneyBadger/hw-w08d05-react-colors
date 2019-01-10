@@ -1,3 +1,8 @@
+## REQUIRED:
+Do your exit tickets please!!
+
+https://goo.gl/forms/DWrZyba2pPwhD1SK2 
+
 # React Color Factory!
 ![](https://media.giphy.com/media/q9mHLtnHONt4s/giphy.gif)
 
@@ -37,3 +42,5 @@ For the front end, feel free to be a little bit creative. Think about how you wo
 ## Submission:
 
 Homework is due midnight Saturday night!
+
+
