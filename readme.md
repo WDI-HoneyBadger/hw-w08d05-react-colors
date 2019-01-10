@@ -1,7 +1,10 @@
-We will be using [the color API](http://www.thecolorapi.com/docs#colors-color-identification-get) to get more information about your colors and saving them to a database.
+# React Color Factory!
+![](https://media.giphy.com/media/q9mHLtnHONt4s/giphy.gif)
+
+For homework you will be making an app for your very own color palette! You will be using [the color API](http://www.thecolorapi.com/docs#colors-color-identification-get) to get more information about your colors and saving them to a database.
 
 ## Backend
-- create an API for your colors
+- create an express API for your colors
 - each color should have an id, name, rgb value, and hex value.
 
 |method|route|model method|controller method|
