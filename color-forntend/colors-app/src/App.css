@@ -1,0 +1,73 @@
+.app {
+  text-align: center
+}
+
+.color-picker-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.color-display {
+  width: 350px;
+  height: 200px;
+  border: 2px solid rgb(57, 56, 56);
+  border-radius: 5px
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px
+}
+
+.flex-one , .flex-three {
+  flex: 1 1 0;
+}
+
+.flex-two{
+  flex: 8 1 0;
+}
+.color-input {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+.submit-color {
+  color: white;
+  background: rgb(57, 56, 56);
+  padding: 6px;
+  font-size: 15px;
+  border-radius: 5px
+}
+
+.new-color {
+  color: white;
+  background: darkred;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 20px;
+  width: 50px;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.color-palette-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.color-palette {
+  width: 200px;
+  height: 280px;
+  border: 2px solid rgb(57, 56, 56);
+  border-radius: 3px;
+  margin: 10px;
+}
+
+.color-in-palette { 
+  height: 150px;
+  border-bottom: 2px solid rgb(57, 56, 56);
+}
