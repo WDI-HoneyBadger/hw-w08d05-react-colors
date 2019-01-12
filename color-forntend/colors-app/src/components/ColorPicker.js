@@ -5,20 +5,24 @@ class ColorPicker extends Component {
     constructor(){
         super();
         this.state = {
-          red: Math.floor(Math.random() * Math.floor(255)),
-          green: Math.floor(Math.random() * Math.floor(255)),
-          blue: Math.floor(Math.random() * Math.floor(255)),
+          red: this.randomColor(),
+          green: this.randomColor(),
+          blue: this.randomColor(),
           selectedColor: {name: '', rgb: '' , hex: ''} 
         }
       }
 
-      updateColor(color, value) {
+      randomColor(){
+          return Math.floor(Math.random() * Math.floor(255));
+      }
+
+    updateColor(color, value) {
           const newColor = this.state;
           newColor[color] = value;
           this.setState({newColor})
       }
 
-      handleSubmit(event) {
+    handleSubmit(event) {
         event.preventDefault();
         const url = `http://thecolorapi.com/id?rgb=rgb(${this.state.red},${this.state.green},${this.state.blue})`;
 
@@ -34,13 +38,27 @@ class ColorPicker extends Component {
             })
     }
 
+    displayColor() {
+        if(this.props.activeColor === null) {
+            return {
+                backgroundColor: `rgb(${this.state.red},${this.state.green},${this.state.blue})`
+            }
+        } else {
+            return {
+                backgroundColor: this.props.activeColor.rgb
+            }
+        }
+
+    }
+
+
     render() {
         return(
             <div className="color-picker-container">
                <p>Choose Your Color</p> 
                <form onSubmit={this.handleSubmit.bind(this)}>
                <div className="color-input">
-                    <div className="color-display" style={ {backgroundColor: `rgb(${this.state.red},${this.state.green},${this.state.blue})`} }></div>
+                    <div className="color-display" style={this.displayColor()}></div>
                     <ColorInput color='red' value={this.state.red}
                             updateColor={this.updateColor.bind(this)}
                             style={ {margin: '0 auto'}} /> 
@@ -52,7 +70,7 @@ class ColorPicker extends Component {
                             <button className="submit-color">SUBMIT</button>  : 
                             <button className="submit-color">Save Change</button> }
                     { this.props.activeColor !== null ?
-                            <button className="new-color" onClick={this.handleSubmit}>New</button> :
+                            <button className="new-color" onClick={this.props.toggleActiveColor}>New</button> :
                             '' }
                 </div>
                 </form>

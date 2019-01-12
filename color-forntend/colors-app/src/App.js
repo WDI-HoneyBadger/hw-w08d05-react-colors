@@ -34,7 +34,8 @@ class App extends Component {
         <ColorPalette 
           key={index}
           color={color}
-          setCurrentColor={this.setCurrentColor.bind(this)} />
+          setCurrentColor={this.setCurrentColor.bind(this)}
+          deleteColor={this.deleteColor.bind(this)} />
       )
     })
   }
@@ -85,7 +86,7 @@ class App extends Component {
   }
 
   updatedColor(color) {
-    const url = `http://localhost:3000/shows/${color.id}`;
+    const url = `http://localhost:3000/colors/${color.id}`;
     fetch(url, {
       method: 'PUT',
       headers: {
@@ -100,7 +101,7 @@ class App extends Component {
         })
         this.setState({
           colors: updatedColor,
-          activeShow: color
+          activeColor: color
         })
       })
       .catch(error => {
@@ -109,11 +110,17 @@ class App extends Component {
   }
 
   handleSubmit(color) {
-    if(this.state.activeColor) {
+    if(this.state.activeColor !== null) {
       this.updatedColor(color)
     } else {
       this.createNewColor(color)
     }
+  }
+
+  toggleActiveColor() {
+    this.setState({
+      activeColor: null
+    })
   }
 
   render() {
@@ -121,7 +128,7 @@ class App extends Component {
       <div className="app">
         <div>
           <h1>Color Palette</h1>
-          <ColorPicker activeColor={this.state.activeColor} updatedColor={this.updatedColor.bind(this)} handleSubmit={this.handleSubmit.bind(this)}/>
+          <ColorPicker activeColor={this.state.activeColor} toggleActiveColor={this.toggleActiveColor.bind(this)} handleSubmit={this.handleSubmit.bind(this)}/>
           <div className="color-palette-container">
             {this.renderColors(this.state.colors)}
           </div>
