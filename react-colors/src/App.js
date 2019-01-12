@@ -8,6 +8,7 @@ import ColorInput from './components/ColorInput';
 class App extends Component {
   constructor() {
     super();
+    this.tileElement = React.createRef();
     this.state = {
       colors: [],
       activeColor: {
@@ -36,7 +37,7 @@ class App extends Component {
       // console.log(colors)
       return (
         <div className="tile" key={index} >
-          <ColorTile color={element} id={element.id}
+          <ColorTile ref={this.tileElement} color={element} id={element.id}
             changeActiveColor={this.changeActiveColor.bind(this)}
             deleteColor={this.deleteColor.bind(this)} 
             toggleEditMode={this.toggleEditMode.bind(this)}
@@ -106,9 +107,12 @@ class App extends Component {
     // console.log(tempColor);
     tempColor[color] = value;
     this.setState({ activeColor: tempColor }, this.colorFetch);
+
+    // this.state.activeColor[color]({activeColor: {[color]: value}})
   }
 
   changeActiveColor(color) {
+    // this.tileElement.current.removeCancel()
     this.setState({ activeColor: color })
   }
 
@@ -158,7 +162,7 @@ class App extends Component {
       .then(response => response.json())
       .then(data => {
         const updatedArray = this.state.colors.map((element) => {
-          return element.id === color.id ? color : element;
+          return element.id === data.id ? data : element;
         })
         const red = Math.floor(Math.random() * 255);
         const green = Math.floor(Math.random() * 255);
@@ -172,7 +176,10 @@ class App extends Component {
             green: green,
             blue: blue
           }
-        }, this.specificColorFetch(red, green, blue))
+        }, () => {
+          this.specificColorFetch(red, green, blue);
+          // this.tileElement.current.removeCancel();
+        })
       })
       .catch(error => console.log(error))
 
@@ -212,7 +219,7 @@ class App extends Component {
 
         {this.renderColorDisplay()}
         {(this.state.editMode) ? <button className="actionButton" onClick={() => this.updateColor(this.state.activeColor)}>Update</button> 
-        : <button className="actionButton" onClick={() => this.createColor(this.state.activeColor)}>Submit</button>}
+        : <button className="actionButton" onClick={() => this.createColor(this.state.activeColor)}>Save Color</button>}
 
         <div className="tileContainer">
           {this.renderTiles(this.state.colors)}

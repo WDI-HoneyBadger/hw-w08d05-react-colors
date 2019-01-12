@@ -5,8 +5,13 @@ class ColorTile extends Component {
         super(props);
         this.state = {
             hover: false,
-            cancel: props.editMode
+            cancel: props.editMode,
+            cancelCheck: false
         }
+    }
+
+    componentDidMount(){
+        this.setState({cancel: false})
     }
     tileStyle() {
         return {
@@ -51,10 +56,18 @@ class ColorTile extends Component {
             this.setState({ cancel: !this.state.cancel })
             this.props.setEditColorId(this.props.color.id)
         }
-        else if(this.state.cancel){
+        else if (this.state.cancel) {
+            console.log("IN ELSE IF")
             this.props.toggleEditMode();
-            this.setState({ cancel: !this.state.cancel })
+            this.setState({ 
+                cancel: false,
+                cancelCheck: false
+             })
         }
+    }
+
+    removeCancel(){
+        this.setState({cancel: false});
     }
 
     render() {
@@ -62,20 +75,28 @@ class ColorTile extends Component {
             <div style={this.tileStyle()} onClick={() => {
                 this.props.changeActiveColor(this.props.color);
                 this.toggleEditAndCancel();
-            }
-            }
+            }}
                 onMouseEnter={() => {
-                    this.setState({cancel: false})
                     this.setState({ hover: true })
+                    if (this.state.cancel) {
+                        this.setState({ cancelCheck: true })
+                    }
                 }}
 
                 onMouseLeave={() => {
                     this.setState({ hover: false })
+                    if (this.state.cancelCheck) {
+                        this.setState({
+                            cancel: true,
+                            cancelCheck: false
+                        })
+                    }
                 }}
             >
 
                 {(this.state.hover) ? this.renderHoverInfo() : ''}
                 {(this.state.cancel) ? this.renderHoverCancel() : ''}
+                {console.log(this.state.cancel)}
 
             </div>
         )
