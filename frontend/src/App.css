@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+
+.colorsPalette{
+  border: 3px solid black;
+  height: 60%;
+  width: 40%;
+  text-align: center;
+  margin-left: 30%;
+}
+
+.color {
+  border: 3px solid black;
+
+}
+
+.selectedColor{
+  border: 3px dashed black;
+  height: 60%;
+  width: 40%;
+  text-align: center;
+  margin-left: 30%;
+}
