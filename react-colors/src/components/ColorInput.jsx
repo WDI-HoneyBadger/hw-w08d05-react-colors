@@ -6,11 +6,11 @@ const ColorInput = (props) => {
             <label> {props.color}
 
                 <input id="theRange" type="range" min='0' max='255' value={props.value} onChange={(event) => {
-                    props.updateColor(event.target.value, props.color);
+                    props.modifyColor(event.target.value, props.color);
                 }} />
 
                 <input id="theNumber" type="number" min='0' max='255' value={props.value} onChange={(event) => {
-                    props.updateColor(event.target.value, props.color);
+                    props.modifyColor(event.target.value, props.color);
                 }} />
 
             </label>
