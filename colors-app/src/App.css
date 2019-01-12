@@ -1,0 +1,16 @@
+.App {
+
+  display: flex;
+}
+
+.container {
+  display: flex;
+
+  width:200px;
+   height: 200px;
+    /* margin: 0 auto; */
+}
+
+.colors { 
+flex-flow: row;
+}
