@@ -1,0 +1,76 @@
+.app{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center
+}
+.tileContainer{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.tile{
+  display: flex;
+  text-align: center;
+  margin: 15px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.hover{
+  overflow: hidden;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.363)
+}
+
+.hoverInfo{
+  /* padding: 0px 0; */
+  margin: 0 auto;
+  color: white;
+}
+
+.delete{
+  background-color: rgb(94, 94, 94);
+  padding: 5px 0;
+}
+
+.delete:hover{
+  color: white;
+}
+
+.cancel{
+
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  margin: 40% 0;
+}
+
+
+.displayContainer{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center
+}
+
+.actionButton {
+  width: 150px;
+  height: 30px;
+  background-color: rgb(46, 46, 46);
+  color: white;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h1{
+  text-align: center;
+}
+
+h4{
+  margin: 10px auto;
+}
+
