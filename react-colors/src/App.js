@@ -8,7 +8,6 @@ import ColorInput from './components/ColorInput';
 class App extends Component {
   constructor() {
     super();
-    this.tileElement = React.createRef();
     this.state = {
       colors: [],
       activeColor: {
@@ -37,12 +36,14 @@ class App extends Component {
       // console.log(colors)
       return (
         <div className="tile" key={index} >
-          <ColorTile ref={this.tileElement} color={element} id={element.id}
+          <ColorTile color={element} id={element.id}
             changeActiveColor={this.changeActiveColor.bind(this)}
             deleteColor={this.deleteColor.bind(this)} 
             toggleEditMode={this.toggleEditMode.bind(this)}
             editMode={this.state.editMode}
-            setEditColorId={this.setEditColorId.bind(this)}/>
+            setEditColorId={this.setEditColorId.bind(this)}
+            activeColor={this.state.activeColor}
+            colorFetch={this.colorFetch.bind(this)}/>
         </div>
       )
     })
@@ -112,6 +113,7 @@ class App extends Component {
   }
 
   changeActiveColor(color) {
+    // this.setState({activeColor[red]:  })
     // this.tileElement.current.removeCancel()
     this.setState({ activeColor: color })
   }

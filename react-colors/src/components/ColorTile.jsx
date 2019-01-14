@@ -4,15 +4,14 @@ class ColorTile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            hover: false,
-            cancel: props.editMode,
-            cancelCheck: false
+            hover: false
         }
     }
 
-    componentDidMount(){
-        this.setState({cancel: false})
-    }
+    // componentDidMount(){
+    //     this.setState({cancel: false})
+    // }
+
     tileStyle() {
         return {
             borderRadius: '10px',
@@ -50,19 +49,26 @@ class ColorTile extends Component {
         )
     }
 
-    toggleEditAndCancel() {
+    handleClickToEdit() {
         if (!this.props.editMode) {
+            this.props.changeActiveColor(this.props.color);
             this.props.toggleEditMode();
-            this.setState({ cancel: !this.state.cancel })
             this.props.setEditColorId(this.props.color.id)
         }
-        else if (this.state.cancel) {
+        else if(this.props.activeColor !== this.props.color){
+            this.props.changeActiveColor(this.props.color);
+            this.props.setEditColorId(this.props.color.id)
+        }
+        else{
             console.log("IN ELSE IF")
             this.props.toggleEditMode();
-            this.setState({ 
-                cancel: false,
-                cancelCheck: false
-             })
+            this.props.setEditColorId('')
+            this.props.changeActiveColor({
+                red: Math.floor(Math.random() * 255),
+                green: Math.floor(Math.random() * 255),
+                blue: Math.floor(Math.random() * 255)
+            })
+            this.props.colorFetch();
         }
     }
 
@@ -73,8 +79,7 @@ class ColorTile extends Component {
     render() {
         return (
             <div style={this.tileStyle()} onClick={() => {
-                this.props.changeActiveColor(this.props.color);
-                this.toggleEditAndCancel();
+                this.handleClickToEdit();
             }}
                 onMouseEnter={() => {
                     this.setState({ hover: true })
@@ -95,8 +100,7 @@ class ColorTile extends Component {
             >
 
                 {(this.state.hover) ? this.renderHoverInfo() : ''}
-                {(this.state.cancel) ? this.renderHoverCancel() : ''}
-                {console.log(this.state.cancel)}
+                {(this.props.color === this.props.activeColor) ? this.renderHoverCancel() : ''}
 
             </div>
         )
