@@ -1,0 +1,30 @@
+.swatch{
+  height: 300px;
+  width: 300px;
+}
+
+.color{
+  height: 200px;
+  width: 200px;
+}
+
+.colors{
+  display: flex;
+}
+
+.color-info{
+  pointer-events: none;
+  width: 100%;
+  height: 90%;
+  background-color: rgba(0,0,0,.5);
+  color: white;
+  position: relative;
+}
+
+.color-info button{
+  pointer-events: all;
+  position: absolute;
+}
+.color-info h4{
+  margin: 0;
+}
