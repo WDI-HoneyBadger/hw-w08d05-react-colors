@@ -1,0 +1,27 @@
+{
+  "name": "hw-w08d05-react-colors",
+  "version": "1.0.0",
+  "description": "![](https://media.giphy.com/media/q9mHLtnHONt4s/giphy.gif)",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "method-override": "^3.0.0",
+    "morgan": "^1.9.1",
+    "pg-promise": "^8.5.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanoudBinSalamah/hw-w08d05-react-colors.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanoudBinSalamah/hw-w08d05-react-colors/issues"
+  },
+  "homepage": "https://github.com/AlanoudBinSalamah/hw-w08d05-react-colors#readme"
+}
